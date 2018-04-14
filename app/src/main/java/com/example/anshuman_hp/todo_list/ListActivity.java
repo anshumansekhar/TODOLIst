@@ -59,15 +59,18 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int postion=viewHolder.getAdapterPosition();
+                Bundle b=new Bundle();
+                b.putInt("position",postion);
                 if(direction==ItemTouchHelper.LEFT) {
-                    new DeleteDialougeFragment().show(getSupportFragmentManager(), "DeleteDialouge");
+                    DeleteDialougeFragment deleteDialougeFragment=new DeleteDialougeFragment();
+                    deleteDialougeFragment.setArguments(b);
+                    deleteDialougeFragment.show(getSupportFragmentManager(), "DeleteDialouge");
+//                    new DeleteDialougeFragment().show();
                 }
                 else if(direction==ItemTouchHelper.RIGHT)
                 {
                      AddDialogFragment dialogFragment=new AddDialogFragment();
                     dialogFragment.show(getSupportFragmentManager(),"EditDialouge");
-//                    dialogFragment.priority.setValue(8);
-//                    dialogFragment.todoDescription.setText("gh");
                 }
 
             }

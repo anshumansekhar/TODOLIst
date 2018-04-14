@@ -14,10 +14,13 @@ import android.support.v7.app.AlertDialog;
 public class DeleteDialougeFragment extends DialogFragment {
     @NonNull
     @Override
+
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
         builder.setMessage("Are You Sure you want to Delete?");
         builder.setTitle("Alert!!");
+        Bundle b=getArguments();
+        int position=b.getInt("position");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -33,3 +36,4 @@ public class DeleteDialougeFragment extends DialogFragment {
         return builder.create();
     }
 }
+
